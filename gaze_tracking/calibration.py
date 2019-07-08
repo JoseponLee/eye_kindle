@@ -51,7 +51,7 @@ class Calibration(object):
         Argument:
             eye_frame (numpy.ndarray): Frame of the eye to be analyzed
         """
-        average_iris_size = 0.7
+        average_iris_size = 1.0
         trials = {}
 
         for threshold in range(5, 200, 5):

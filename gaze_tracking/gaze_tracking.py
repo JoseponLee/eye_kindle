@@ -176,7 +176,7 @@ class GazeTracking(object):
         filename = '01.wav'
         rate = 16000
         mouth_higth = (self.landmarks.part(66).y - self.landmarks.part(62).y) / self.face_width  # 嘴巴张开程度
-        if mouth_higth > 0.06 and self.mouse_flag == False:
+        if mouth_higth > 0.08 and self.mouse_flag == False:
             self.mouse_flag = True
             pag.hotkey('ctrl', '6')
             speech.recording(filename, rate)
@@ -186,8 +186,8 @@ class GazeTracking(object):
             if ans:
                 pcp.copy(ans)
                 pag.hotkey('ctrl', 'v')
-                pag.click()
                 print(ans)
+            pag.click()
         elif mouth_higth < 0.06:
             self.mouse_flag = False
 
@@ -207,7 +207,7 @@ class GazeTracking(object):
             self.result.append((x, y))
             pag.moveTo(x, y)
             stay_judge(x, y)
-            self.HighLight_judge(thu=90)
+            self.HighLight_judge(thu=120)
             self.mouse_judge()
 
     def make_data(self):
