@@ -25,7 +25,7 @@
 
 ## Results
 
-![images](D:\programs\eye_tracking\1.img.png)
+![images](1.img.png)
 
 ## Require
 
@@ -102,7 +102,7 @@ for i in range(k):
 
 运行`train.py`，运行结束后得到下图：
 
-![images](D:\programs\eye_tracking\Figure_1.png)
+![images](Figure_1.png)
 
 根据自己运行的结果，我这里神经网络在75个Epochs后验证集上loss不再下降，因此我在`train(epoch_num=75)`中将`epoch_num`设置成75，注释上面这段代码，对`train(epoch_num=75)`解除注释，运行代码，生成模型权重保存在`model.h5`中
 
@@ -110,7 +110,7 @@ for i in range(k):
 
 开始使用前先下载打开[pdf-xchange viewer](https://www.tracker-software.com/product/pdf-xchange-viewer)，选择一本书，然后运行`main.py`,即可开始使用，使用方式如[Introduction](#Introduction)所叙述，使用效果如下图所示：
 
-![images](D:\programs\eye_tracking\2.img.png)
+![images](2.img.png)
 
 另外，因为我上传的包有预训练的模型，可以直接运行main.py进行尝试，若识别效果不好，则同[Initialize](#Initialize)中调节参数再尝试，若识别正常，但是鼠标跟踪异常，可以重新训练自己的数据集进行尝试。
 
