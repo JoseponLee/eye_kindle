@@ -58,38 +58,38 @@ def smooth_curve(points, factor = 0.9):
     return smoothed_points
 
 if __name__ == '__main__':
-    train(epoch_num=75)
+    # train(epoch_num=75)
 
-    # k = 3
-    # num_val_samples = len(train_data) // k
-    # num_epochs = 200
-    # all_mae_histories = []
-    #
-    # for i in range(k):
-    #     print('processing_data #', i)
-    #     val_data = train_data[i * num_val_samples: (i+1) * num_val_samples]
-    #     val_target = train_label[i * num_val_samples: (i+1) * num_val_samples]
-    #
-    #     partial_train_data = np.concatenate(
-    #         [train_data[:i * num_val_samples],
-    #         train_data[(i+1) * num_val_samples:]],
-    #         axis=0)
-    #     partial_train_target = np.concatenate(
-    #         [train_label[:i * num_val_samples],
-    #          train_label[(i + 1) * num_val_samples:]],
-    #         axis=0)
-    #
-    #     model = build_model()
-    #     history = model.fit(partial_train_data, partial_train_target, validation_data=(val_data, val_target),
-    #                         epochs=num_epochs, batch_size=128, verbose=1)
-    #     mae_history = history.history['val_mean_absolute_error']
-    #     all_mae_histories.append(mae_history)
-    #
-    # # print(all_mae_histories)
-    # average_mae_history = [
-    #     np.mean([x[i] for x in all_mae_histories]) for i in range(num_epochs)]
-    # average_mae_history = smooth_curve(average_mae_history[:])
-    # plt.plot(range(1, len(average_mae_history) + 1), average_mae_history)
-    # plt.xlabel('Epochs')
-    # plt.ylabel('Validation MAE')
-    # plt.show()
+    k = 3
+    num_val_samples = len(train_data) // k
+    num_epochs = 200
+    all_mae_histories = []
+
+    for i in range(k):
+        print('processing_data #', i)
+        val_data = train_data[i * num_val_samples: (i+1) * num_val_samples]
+        val_target = train_label[i * num_val_samples: (i+1) * num_val_samples]
+
+        partial_train_data = np.concatenate(
+            [train_data[:i * num_val_samples],
+            train_data[(i+1) * num_val_samples:]],
+            axis=0)
+        partial_train_target = np.concatenate(
+            [train_label[:i * num_val_samples],
+             train_label[(i + 1) * num_val_samples:]],
+            axis=0)
+
+        model = build_model()
+        history = model.fit(partial_train_data, partial_train_target, validation_data=(val_data, val_target),
+                            epochs=num_epochs, batch_size=128, verbose=1)
+        mae_history = history.history['val_mean_absolute_error']
+        all_mae_histories.append(mae_history)
+
+    # print(all_mae_histories)
+    average_mae_history = [
+        np.mean([x[i] for x in all_mae_histories]) for i in range(num_epochs)]
+    average_mae_history = smooth_curve(average_mae_history[:])
+    plt.plot(range(1, len(average_mae_history) + 1), average_mae_history)
+    plt.xlabel('Epochs')
+    plt.ylabel('Validation MAE')
+    plt.show()

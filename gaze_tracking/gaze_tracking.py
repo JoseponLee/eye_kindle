@@ -216,8 +216,8 @@ class GazeTracking(object):
             self.label.append(np.array(self.mouse_pos))
 
     def save_data(self):
-        # np.savez('data_train1.npz', train_data=np.array(self.data), train_label=np.array(self.label))
-        np.savez('data_val1.npz', val_data=np.array(self.data), val_label=np.array(self.label))
+        np.savez('data_train1.npz', train_data=np.array(self.data), train_label=np.array(self.label))
+        # np.savez('data_val1.npz', val_data=np.array(self.data), val_label=np.array(self.label))
 
     def refresh(self, frame):
         """Refreshes the frame and analyzes it.
